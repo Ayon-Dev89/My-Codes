@@ -1,0 +1,120 @@
+<mvc:View controllerName="com.cpg.form.formmodule.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+      xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+     <content>
+    
+    <VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354wideDual"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<core:Title text="Forms" />
+				<Label text="{i18n>Name}" />
+				<Text  text="{FormModel>/ernam}" />
+				<Label text="PO NUMBER" />
+				<Input id= "POID" width="10rem" value="{FormModel>/ebeln}" />
+				<Label text="Company Code" />
+				<Text  text="{FormModel>/bukrs}" />
+					<Label text="date" />
+				<Text  text="{FormModel>/aedat}" />
+					<Label text="Customer Number" />
+				<Text  text="{FormModel>/kunnr}" />
+				<!-- <Label text="Country" />
+				<Select id="country" selectedKey="{FormModel>/Country}">
+					<items>
+						<core:Item text="India" key="IND"/>
+                        <core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+                        <core:Item text="USA" key="USA"/>
+					</items> -->
+				<!-- </Select> -->
+				<core:Title text="Customer"/>
+				<Label text="Name"/>
+				<Text  text="{FormModel>/HeadertoItemNP1/results/0/name1}"/>
+				<Label text="City"/>
+				<Text  text="{FormModel>/HeadertoItemNP1/results/0/ort01}"/>
+				<Label text="Address Number"/>
+				<Text  text="{FormModel>/HeadertoItemNP1/results/0/adrnr}"/>
+				<Label text="Telephone Number"/>
+				<Text  text="{FormModel>/HeadertoItemNP1/results/0/telf1}"/>
+				<!-- <Label text="Email" />
+				<Input value="{FormModel>/Email}"  /> -->
+				<!-- <Button  icon="sap-icon://add" press="OnAdd" ></Button> -->
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+		<Table id="idProductsTable"
+		items="{FormModel>/HeadertoItemNP/results/}">
+        			<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Button text="Get data from backend" type="Accept" press="OnAdd"></Button>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+			<columns>
+            <Column
+				width="12em">
+				<Text text="PO Number" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Item" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Company Code" />
+			</Column>
+
+			<Column
+				width="12em">
+				<Text text="Material Number" />
+			</Column>
+			
+			<Column
+				width="12em">
+				<Text text="Plant" />
+			</Column>
+
+			<!-- <Column
+				width="12em">
+				<Text text="{i18n>Email}" />
+			</Column> -->
+
+
+		    </columns>	
+        <items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+		         <Input value="{FormModel>ebeln}" ></Input>
+				 <Input value="{FormModel>ebelp}" />
+				<Input value="{FormModel>bukrs}" />
+				 <Input value="{FormModel>matnr}" />
+				<Input value="{FormModel>werks}" />
+
+
+		 	    </cells>
+			</ColumnListItem>
+		</items>
+     </Table>
+    </content>
+    </Page>
+</mvc:View>
