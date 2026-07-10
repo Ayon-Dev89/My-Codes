@@ -1,0 +1,177 @@
+<mvc:View controllerName="com.cpg.master.masterdetails.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" 
+	xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdct="sap.ui.mdc.table"
+	xmlns:vm="sap.ui.fl.variants"
+	xmlns:upload="sap.m.upload"
+	xmlns:mdcat="sap.ui.mdc.actiontoolbar">
+
+    	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+	<Page title = "Header Details">
+		<ObjectHeader id="objh" title="{FormModel>/EBELN}" numberUnit="INR"	>
+		<statuses>
+			<ObjectStatus 
+				text="Some Damaged"
+				state="Error" />
+			<ObjectStatus
+				text="In Stock"
+				state="Success" />
+		</statuses>
+		<ObjectAttribute text="1000 Kg" />
+		<ObjectAttribute text="34 x 56 x 23 CM" />
+		<ObjectAttribute text="{Description}" />
+		<ObjectAttribute
+			text="www.sap.com"
+			active="true" />
+
+	</ObjectHeader>
+<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+<items>
+<IconTabFilter icon="sap-icon://hint" key="info">
+<Table id="idTable"
+		items="{FormModel>/HeadertoItemNP/results/}">
+        			<!-- <headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Button text="Get data" type="Accept" press="OnGet"></Button>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar> -->
+			<columns>
+            <Column
+				width="12em">
+				<Text text="EBELN" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="EBELP" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="MATNR" />
+			</Column>
+
+			<Column
+				width="12em">
+				<Text text="BUKRS" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="WERKS" />
+			</Column>
+		    </columns>	
+        <items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+		         <Input value="{FormModel>EBELN}" ></Input>
+				 <Input value="{FormModel>EBELP}" />
+				<Input value="{FormModel>MATNR}" />
+				 <Input value="{FormModel>BUKRS}" />
+                  <Input value="{FormModel>WERKS}" />
+
+
+
+		 	    </cells>
+			</ColumnListItem>
+		</items>
+     </Table>
+</IconTabFilter>
+<IconTabFilter icon="sap-icon://attachment" key="attachments" count="3">
+<Text text="Attachments go here ..."/>
+<l:VerticalLayout>
+<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+<Button text="Upload File" press="handleUploadPress"/>
+</l:VerticalLayout>
+</IconTabFilter>
+<IconTabFilter icon="sap-icon://notes" key="notes"  count="12">
+	
+<Table id="idTable1"
+		items="{VendorModel>/}">
+
+			<columns>
+            <Column
+				width="12em">
+				<Text text="NAME" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="LIFNR" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="PSTLZ" />
+			</Column>
+
+			<Column
+				width="12em">
+				<Text text="STRAS" />
+			</Column>
+
+		    </columns>	
+        <items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+		         <Input value="{VendorModel>NAME}" ></Input>
+				 <Input value="{VendorModel>LIFNR}" />
+				<Input value="{VendorModel>PSTLZ}" />
+				 <Input value="{VendorModel>STRAS}" />
+
+
+		 	    </cells>
+			</ColumnListItem>
+		</items>
+     </Table>
+
+
+
+</IconTabFilter>
+<IconTabFilter icon="sap-icon://group" key="people">
+<Text text="People content goes here ..."/>
+</IconTabFilter>
+</items>
+</IconTabBar>
+ 
+
+	
+    	<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Accept" type="Accept" />
+				<Button text="Reject" type="Reject" />
+
+			</OverflowToolbar>
+		</footer>
+			</Page>
+
+	
+		</detailPages>
+        	<masterPages>
+		
+			<Page
+				title="Master Details">
+        <SearchField width="100%" search=".onSearch" />
+        <List  items="{MasterModel>/}" id="Master"
+		headerText="">
+
+		<StandardListItem
+           	type="Navigation" 
+			title="{MasterModel>EBELN}"
+			description="{MasterModel>ERNAM}" 
+            press="onMasterPress"
+            info="{MasterModel>ERDAT}"/>
+           
+	</List>
+
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>
